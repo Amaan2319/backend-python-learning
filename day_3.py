@@ -14,3 +14,17 @@ test2 = Test("Bob", 25)
 
 print(test1 < test2)  
 print(test1, test2)
+
+class Animal:
+    def __init__(self, name):
+        self.name = name
+    def __str__(self):
+        return f"Animal: {self.name}"
+class Dog(Animal):
+    def __init__(self, name, breed):
+        super().__init__(name)
+        self.breed = breed
+    
+
+goldie = Dog("Goldie", "Golden Retriever")
+print(goldie)

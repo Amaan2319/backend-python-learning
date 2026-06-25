@@ -88,3 +88,40 @@ class Child(parent):
 
 child_instance = Child()
 child_instance.my_method()  # This will print the implementation message 
+
+# dataclass 
+from dataclasses import dataclass
+
+@dataclass
+class Example:
+    name: str
+    age: int
+
+
+# task Day 3
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def area(self, radius):
+        return 3.14 * radius * radius
+
+class Rectangle(Shape):
+    def area(self, length, width):
+        return length * width
+
+class Triangle(Shape):
+    def area(self, base, height):
+        return 0.5 * base * height
+
+circle = Circle()
+rectangle = Rectangle()
+triangle = Triangle()
+areas = [circle.area(5),rectangle.area(4, 6),  triangle.area(3, 8) ]
+# Area of circle with radius 5
+  # Area of rectangle with length 4 and width 6  # Area of triangle with base 3
+for area in areas:
+    print(area)
+

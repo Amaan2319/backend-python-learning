@@ -28,3 +28,48 @@ class Dog(Animal):
 
 goldie = Dog("Goldie", "Golden Retriever")
 print(goldie)
+
+
+# MRO
+
+class A:
+    def method(self):
+        print("Method from class A")
+
+class B(A):
+    def method(self):
+        print("Method from class B")
+
+class C(A):
+    def method(self):
+        print("Method from class C")
+
+class D(B, C):
+    def method(self):
+        print("Method from class D")
+        super().method()  # Call the method from the next class in MRO
+print(D.__mro__)  # Print the Method Resolution Order
+p = D()
+p.method()  # This will call the method from class D, then B, then C
+
+# composition
+class Vehicle:
+    def __init__(self,engine,os):
+        self.engine = engine
+        self.os = os
+    def get_info(self):
+        return f"Vehicle with {self.engine.type} engine and {self.os.name} OS"
+
+class Engine:
+    def __init__(self, type):
+        self.type = type
+
+
+class OS:
+    def __init__(self, name):
+        self.name = name
+
+engine = Engine("V8")
+os = OS("Linux")
+vehicle = Vehicle(engine, os)
+print(vehicle.get_info())

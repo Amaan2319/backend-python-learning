@@ -73,3 +73,18 @@ engine = Engine("V8")
 os = OS("Linux")
 vehicle = Vehicle(engine, os)
 print(vehicle.get_info())
+
+
+from abc import ABC, abstractmethod
+
+class parent(ABC):
+    @abstractmethod
+    def my_method(self):
+        pass
+
+class Child(parent):
+    def my_method(self):
+        print("Implementation of abstract method in Child class")
+
+child_instance = Child()
+child_instance.my_method()  # This will print the implementation message 

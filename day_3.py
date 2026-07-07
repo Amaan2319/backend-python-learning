@@ -90,7 +90,7 @@ child_instance = Child()
 child_instance.my_method()  # This will print the implementation message 
 
 # dataclass 
-from dataclasses import dataclass
+from dataclasses import dataclass,field
 
 @dataclass
 class Example:
@@ -98,30 +98,42 @@ class Example:
     age: int
 
 
-# task Day 3
 class Shape(ABC):
     @abstractmethod
     def area(self):
         pass
 
+@dataclass
 class Circle(Shape):
-    def area(self, radius):
-        return 3.14 * radius * radius
+    radius: float
+
+class Circle(Shape):
+    def area(self):
+        return 3.14 * (self.radius ** 2)
+
+@dataclass
+class Rectangle(Shape):
+    width: float
+    height: float
 
 class Rectangle(Shape):
-    def area(self, length, width):
-        return length * width
+    def area(self):
+        return self.width * self.height
 
-class Triangle(Shape):
-    def area(self, base, height):
-        return 0.5 * base * height
+@dataclass
+class Square(Shape):
+    side: float
 
-circle = Circle()
-rectangle = Rectangle()
-triangle = Triangle()
-areas = [circle.area(5),rectangle.area(4, 6),  triangle.area(3, 8) ]
-# Area of circle with radius 5
-  # Area of rectangle with length 4 and width 6  # Area of triangle with base 3
-for area in areas:
-    print(area)
 
+class Square(Shape):
+    def area(self):
+        return self.side ** 2
+    
+
+circle = Circle(radius=5)
+rectangle = Rectangle(width=4, height=6)
+square = Square(side=3)
+
+# class ShapeFactory
+
+    

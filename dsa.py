@@ -1,4 +1,7 @@
 # two sum problem
+from dataclasses import dataclass
+
+
 def twoSum(arr,target):
     seen = {}
     for i in range(0,len(arr)):
@@ -13,7 +16,7 @@ print(twoSum([2,7,1,3,9],9))
 
 
 # best time to buy and sell stock
-def maxProfit(self, prices: List[int]) -> int:
+def maxProfit(self, prices):
         min_price =float('inf')
         max_profit=0
         for price in prices:
@@ -22,3 +25,18 @@ def maxProfit(self, prices: List[int]) -> int:
             elif price-min_price>max_profit:
                 max_profit=price-max_profit   
         return max_profit
+
+@dataclass
+class Parent:
+     name: str
+     age: int
+
+@dataclass
+class Child(Parent):
+     grade: int
+
+a = Parent("amaan",40)
+print(a.name)
+
+b = Child("x", 10, 5)
+print(b.name)

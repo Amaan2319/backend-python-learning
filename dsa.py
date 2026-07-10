@@ -26,17 +26,24 @@ def maxProfit(self, prices):
                 max_profit=price-max_profit   
         return max_profit
 
-@dataclass
-class Parent:
-     name: str
-     age: int
+from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
 
 @dataclass
+class Parent(ABC):
+    name: str
+    age: int
+    
+    def getName(self):
+        return self.name
+    @abstractmethod
+    def getAge(self):
+        pass
+
 class Child(Parent):
-     grade: int
+    def getAge(self):
+        return self.age
 
-a = Parent("amaan",40)
-print(a.name)
+c = Child(name="Amaan", age=21)
 
-b = Child("x", 10, 5)
-print(b.name)
+print(c.getAge())

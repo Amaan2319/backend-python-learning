@@ -69,3 +69,34 @@ class Smartphone:
 
 phone1 = Smartphone(model="Poco X6 Neo", _battery=Battery(5000), _screen=Screen("AMOLED"), _processor=Processor(8))
 print(phone1.model)
+
+@dataclass 
+class Subscription:
+    plan: str
+    price: float
+    is_active: bool = field(default=True)
+
+
+@dataclass
+class Address:
+    street: str
+    city: str
+    zip_code: str
+
+
+@dataclass
+class User:
+    name: str
+    subscription: Subscription
+    address: Address
+
+    @property
+    def subscription_info(self):
+        return f"Plan: {self.subscription.plan}, Price: {self.subscription.price}, Active: {self.subscription.is_active}"
+    
+
+h_address = Address(street="Vatva", city="Ahmedabad", zip_code="382445")
+premium_plan = Subscription(plan="Premium", price=9.99, is_active=True)
+
+amaan = User(name="Amaan", subscription=premium_plan, address=h_address)
+print(amaan.subscription_info)  # Output: Plan: Premium, Price: 9.

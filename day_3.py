@@ -134,6 +134,7 @@ circle = Circle(radius=5)
 rectangle = Rectangle(width=4, height=6)
 square = Square(side=3)
 
-# class ShapeFactory
-
-    
+class ShapeFactory(ABC):
+    @abstractmethod
+    def area(self):
+        pass

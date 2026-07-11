@@ -100,3 +100,28 @@ premium_plan = Subscription(plan="Premium", price=9.99, is_active=True)
 
 amaan = User(name="Amaan", subscription=premium_plan, address=h_address)
 print(amaan.subscription_info)  # Output: Plan: Premium, Price: 9.
+
+# first class functions
+
+def say_hello(name: str):
+    return f"Hello {name}"
+
+def welcome(func, user_name):
+    return func(user_name)
+
+greet = say_hello
+
+print(greet("Amaan"))
+
+salam = welcome(say_hello,"kalpesh")
+print(salam)
+
+def multiplier(factor):
+    def multiply_by(number):
+        return number*factor
+
+    return multiply_by
+
+multiplied = multiplier(5)
+
+print(multiplied(2))

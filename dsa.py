@@ -103,25 +103,24 @@ print(amaan.subscription_info)  # Output: Plan: Premium, Price: 9.
 
 # first class functions
 
-def say_hello(name: str):
-    return f"Hello {name}"
+def greet(name):
+    return f"Hello{name} "
 
-def welcome(func, user_name):
-    return func(user_name)
+greet_amaan = greet("amaan")
+print(greet_amaan)
 
-greet = say_hello
+def welcome(name):
+    return f"Welcome {name}"
 
-print(greet("Amaan"))
+funcs = [greet, welcome]
 
-salam = welcome(say_hello,"kalpesh")
-print(salam)
+for func in funcs:
+    print(func("charlie"))
 
-def multiplier(factor):
-    def multiply_by(number):
-        return number*factor
 
-    return multiply_by
-
-multiplied = multiplier(5)
-
-print(multiplied(2))
+def greet_(word):
+    def hello(name):
+        return f"{word} {name}!"
+    return hello
+xy = greet_("salam")
+print(xy("bob"))

@@ -124,3 +124,22 @@ def greet_(word):
     return hello
 xy = greet_("salam")
 print(xy("bob"))
+
+# decorators again
+import time 
+def time_logger(func):
+    def wrapper(*args,**kwargs):
+        start_time = time.time()
+
+        result = func(*args,**kwargs)
+        end_time = time.time()
+        exec_Time = end_time - start_time
+        print(f"Function {func.__name__} took {exec_Time:.6f} seconds to run")
+        return result
+    return wrapper
+
+@time_logger
+def test():
+    print("test function")
+
+test()

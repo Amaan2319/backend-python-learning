@@ -144,19 +144,3 @@ def test():
 
 test()
 
-# parameterized decorator
-def repeat(num=2):
-    def decorator_repeat(func):
-        def wrapper(*args,**kwargs):
-            result = None
-            for _ in range(num):
-                result = func(*args,**kwargs)
-            return result
-        return wrapper
-    return decorator_repeat
-
-@repeat(num=3)
-def greet(name):
-    return f"Kem chho {name}"
-kamlesh=greet("kalpesh")
-print(kamlesh)

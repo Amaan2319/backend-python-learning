@@ -142,7 +142,7 @@ def time_logger(func):
 def test():
     print("test function")
 
-test()
+test() 
 
 # anagram program
 def isAnagram(s,t):

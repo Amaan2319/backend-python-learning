@@ -177,3 +177,32 @@ def firstUnique(s: str):
             return i
 
     return -1
+
+def reverse_words_manual(sentence: str) -> str:
+    result = ""
+    i = len(sentence) - 1
+    
+    while i >= 0:
+        # Step 1: Skip any trailing or multiple spaces
+        while i >= 0 and sentence[i] == ' ':
+            i -= 1
+            
+        if i < 0: 
+            break
+            
+        # Step 2: Mark the end of the word
+        word_end = i
+        
+        # Step 3: Move left to find the start of the word
+        while i >= 0 and sentence[i] != ' ':
+            i -= 1
+            
+        # Step 4: Manually extract the word from (i+1) to word_end
+        # Add a space before appending the next word, if result isn't empty
+        if result != "":
+            result += " "
+            
+        for k in range(i + 1, word_end + 1):
+            result += sentence[k]
+            
+    return result

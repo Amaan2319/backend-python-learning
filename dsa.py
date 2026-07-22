@@ -1,5 +1,6 @@
 # two sum problem
 from dataclasses import dataclass
+from collections import defaultdict
 
 
 def twoSum(arr,target):
@@ -163,3 +164,16 @@ def isPalindrome(s):
         r.append(item)
 
     return s == "".join(r)
+
+# first unique number
+def firstUnique(s: str):
+    count = defaultdict(int)
+
+    for char in s:
+        count[char] += 1
+
+    for i, char in enumerate(s):
+        if s[char]==1:
+            return i
+
+    return -1

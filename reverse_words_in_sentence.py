@@ -27,28 +27,34 @@ def reverse_words_manual(sentence: str) -> str:
             
     return result
 
-# easy method
-def reverse_words_(s):
-    # result = ""
-    words = s.split()
-    reversed_ = words[::-1]
-    reversed_sentence = " ".join(reversed_)
-    print(reversed_sentence)
-    return reversed_sentence
-
-print(reverse_words_("Amaan is cool "))
-
 sentence = "Chalo jantar mantar"
-reversed_sentence = sentence[::-1]
-i = len(sentence)-1
-result_list=[]
-while i >0:
-    if i >0 and sentence[i]!=" ":
-        reversed_Word=sentence[-1:i]
-        print(reversed_Word)
-    if sentence[i]==" ":
-        i-=1
-    i-=1
-    result_list.append(reversed_Word)
+i = len(sentence) - 1
+result_list = []
 
+# Loop from the end of the string down to index 0
+while i >= 0:
+    # 1. Skip any trailing spaces
+    while i >= 0 and sentence[i] == " ":
+        i -= 1
+        
+    if i < 0:
+        break
+        
+    # 2. Mark the end index of the current word
+    word_end = i + 1
+    
+    # 3. Find the start index of the current word by looking for the next space
+    while i >= 0 and sentence[i] != " ":
+        i -= 1
+        
+    word_start = i + 1
+    
+    # 4. Extract the word using valid forward slicing and save it
+    current_word = sentence[word_start:word_end]
+    result_list.append(current_word)
+
+# Join the extracted words back with spaces
 result_sentence = " ".join(result_list)
+
+print(result_sentence)
+# Output: mantar jantar Chalo

@@ -58,3 +58,24 @@ result_sentence = " ".join(result_list)
 
 print(result_sentence)
 # Output: mantar jantar Chalo
+
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        result = list()
+        i = len(s)-1
+
+        while i>=0:
+            while i >=0 and s[i]==" ":
+                i-=1
+            if i<0:
+                break
+            end_word = i+1
+            while i>=0 and s[i]!=" ":
+                i-=1
+            
+            start_word = i+1
+           
+            result.append(s[start_word:end_word])
+
+        reverse_sentence = " ".join(result)
+        return reverse_sentence
